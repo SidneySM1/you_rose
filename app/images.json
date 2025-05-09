@@ -1,0 +1,12 @@
+[
+    {
+      "id": "img1",
+      "src": "app/images/1.jpg",
+      "cor": "#4FC3F7"
+    },
+    {
+      "id": "img2",
+      "src": "app/images/2.jpg",
+      "cor": "#A5D6A7"
+    }
+  ]
