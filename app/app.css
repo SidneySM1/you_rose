@@ -1,0 +1,369 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fdf6f0;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  h1 {
+    color: #d6336c;
+  }
+  
+  .images {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  
+  .image-option {
+    position: relative;
+    border: 3px solid transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+  
+  .image-option.selected {
+    border-color: #d6336c;
+  }
+  
+  .ping-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: currentColor;
+    transform: translate(-50%, -50%);
+    animation: ping 0.6s ease-out forwards;
+  }
+  
+  @keyframes ping {
+    0% {
+      width: 0;
+      height: 0;
+      opacity: 1;
+    }
+    70% {
+      width: 120px;
+      height: 120px;
+      opacity: 0.5;
+    }
+    100% {
+      width: 180px;
+      height: 180px;
+      opacity: 0;
+    }
+  }
+  
+  .result {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+    color: #fff;
+  }
+  
+  #rosaContainer {
+    max-width: 300px;
+    max-height: 300px;
+    width: 100%;
+    height: auto;
+    margin-top: 2rem;
+  }
+  
+  .history {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .history-day {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .color-box {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  
+  .show-images {
+    background: #d6336c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+  }
+  
+  .selected-images {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .selected-images img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  .image-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+
+  #rosaContainer {
+    position: relative;
+    max-width: 300px;
+    max-height: 300px;
+    width: 100%;
+    height: auto;
+    margin-top: 2rem;
+}
+
+.image-in-rosa {
+    width: 80px; /* Pode ajustar conforme necessário */
+    height: 80px; /* Pode ajustar conforme necessário */
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 10; /* Garante que a imagem ficará em cima da rosa */
+}
+
+.anotacao-container {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#anotacao {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: vertical;
+}
+
+.upload-label {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #1B2845;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Esconde o input real */
+#colorPicker {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Estilo do seletor visível (label) */
+.color-picker-label {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  display: inline-block;
+  background-color: #FFD700; /* Valor inicial */
+  transition: border 0.2s, transform 0.2s;
+}
+
+.color-picker-label:hover {
+  border-color: #888;
+  transform: scale(1.1);
+}
+
+
+
+
+
+
+
+
+
+
+/* O modal (fundo escuro) */
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9); /* Fundo escuro */
+  display: none;
+}
+
+/* O conteúdo da imagem */
+.modal-content {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* A legenda da imagem */
+#caption {
+  text-align: center;
+  color: #ccc;
+  font-size: 20px;
+  padding: 10px;
+}
+
+/* O botão de fechar (X) */
+.close {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #f1f1f1;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.finalizar-btn {
+  background: none;
+  border: none;
+  color: #d6336c;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s;
+  margin-top: 14px;
+}
+
+.finalizar-btn:hover {
+  color: #c2185b; /* Cor um pouco mais escura quando o botão for hover */
+}
+
+
+/* Estilo para popup dia */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grade-imagens {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.grade-imagens img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.anotacao-dia {
+  font-style: italic;
+  color: #444;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.fechar-popup {
+  background: #d6336c;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+.fechar-x {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: #d6336c;
+  cursor: pointer;
+}
+
+.fechar-x:hover {
+  color: #d6336c;
+}
+
+.popup-dia {
+  position: relative;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.titulo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.info-button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #d6336c;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-button:hover {
+  background-color: #b92459;
+}

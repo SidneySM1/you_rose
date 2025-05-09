@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cores do Nosso Dia</title>
+  <style type="text/css">
+    @import url('app/app.css');
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+</head>
+<body>
+  <div class="titulo-container">
+    <h1>Colors and Days</h1>
+    <button id="infoButton" class="info-button" title="About this project">i</button>
+  </div>
+  
+  <div class="images" id="imageContainer"></div>
+
+  <div style="border: 1px solid #d6d6d6; padding: 10px; margin: 10px 0; display:flex; flex-direction:row; gap:6px; width:100%; max-width: 400px; align-items: center; justify-content: center;">
+    <div>
+      <label for="colorPicker" class="color-picker-label"></label>
+      <input type="color" id="colorPicker" value="#FFD700" title="Escolha uma cor para a imagem">
+    </div>
+    <div class="upload-wrapper">
+      <label for="fileInput" class="upload-label">+ Choose the image of your day</label>
+      <input type="file" id="fileInput" accept="image/*" style="display: none;">
+    </div>
+  </div>
+  
+  <textarea id="anotacao" rows="3" placeholder="Something about today?..."></textarea>
+
+
+  <button class="finalizar-btn" id="finalizarBtn">Complete Your Choice</button>
+
+  <div id="rosaContainer">
+    <!-- O SVG da rosa será inserido aqui -->
+    
+  </div>
+
+
+  <div class="result" id="resultado"></div>
+  <div class="history" id="historico"></div>
+  
+  <!-- <script src="app/app.js"></script> -->
+  <script type="module" src="app/app.js"></script>
+
+  <!-- Modal para exibir imagem em tela cheia -->
+<div id="fullscreenModal" class="modal" style="display:none;">
+  <span id="closeModal" class="close">&times;</span>
+  <img id="fullscreenImage" class="modal-content" />
+  <div id="caption"></div>
+</div>
+
+</body>
+</html>
