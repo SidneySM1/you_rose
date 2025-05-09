@@ -1,13 +1,10 @@
-// app/app.js
 
-const imagens = [
-    { id: "img1", src: "app/images/1.jpg", cor: "#4FC3F7" },
-    { id: "img2", src: "app/images/2.jpg", cor: "#A5D6A7" }
-];
+const imagens = [];
+
 
 // Carregar imagens de app/images.json
-async function carregarImagens() {
-    const imagens = [];
+async function carregarImagens(returnImages = false) {
+    // const imagens = [];
 
     const tonsAmareloQueimado = [
         "#FFD54F", "#FFCA28", "#FFC107", "#FFB300", "#FFA000", "#FF8F00", "#FF6F00",
@@ -118,6 +115,7 @@ function atualizarCorRosa() {
         setSVGColor("#a7a7ae");
         return;
     }
+    console.log(imagens);
     const cores = selecionadasArr.map(id => imagens.find(img => img.id === id).cor);
     const corFinal = mixColors(cores);
     setSVGColor(corFinal);
@@ -131,7 +129,6 @@ function setSVGColor(cor) {
 
 // Função para armazenar e exibir o histórico
 function atualizarHistorico() {
-    console.log("Atualizando histórico");
     const historico = document.getElementById("historico");
     historico.innerHTML = "<h2>Days:</h2>";
     Object.keys(localStorage).sort().reverse().forEach(data => {
@@ -377,6 +374,7 @@ carregarImagens().then(imagens => {
         el.src = img.src;
         el.alt = img.id;
         el.className = "image-option";
+        el.style.border = `2px solid ${img.cor}`;
 
         wrapper.appendChild(el);
         el.setAttribute("draggable", true);
@@ -386,7 +384,6 @@ carregarImagens().then(imagens => {
             e.dataTransfer.setData("text/plain", img.id);
         });
         el.addEventListener("touchstart", (e) => {
-            console.log("Touchstart");
             e.preventDefault(); // Evita comportamento nativo de rolagem em alguns navegadores
             if (!selecionadas.has(img.id) && selecionadas.size < 3) {
                 selecionadas.add(img.id);
@@ -589,7 +586,6 @@ function renderImagem(img) {
     });
 
     el.addEventListener("touchstart", (e) => {
-        console.log("Touchstart2");
         e.preventDefault();
         if (!selecionadas.has(img.id) && selecionadas.size < 3) {
             selecionadas.add(img.id);
