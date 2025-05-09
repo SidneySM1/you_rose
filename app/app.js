@@ -277,7 +277,7 @@ function finalizarSelecao() {
 function mostrarResultado(cor, anotacao) {
     const res = document.getElementById("resultado");
     res.style.backgroundColor = cor;
-    res.innerHTML = `<h2>Cor de hoje</h2><p>${cor}</p><p>${anotacao}</p>`;
+    res.innerHTML = `<h2>Color</h2><p>${cor}</p><p>${anotacao}</p>`;
 
     // Atualizar rosa
     const rosa = document.getElementById("rosaContainer");
